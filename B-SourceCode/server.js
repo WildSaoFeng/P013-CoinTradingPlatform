@@ -1,24 +1,35 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const passport = require('passport');
 const moment = require('moment');
-// const { SmallHeap, LargeHeap } = require('./data_structure/heap');
+
+// const Price5s= require('models/priceInFiveSec');
+const Heap = require('./models/heaps');
+
 const config = require('./config/database');
+const fileLog = require('./utils/log');
+const PORT = process.env.port || 8000;
+
+// Begin App
 
 const app = express();
+app.use(bodyParser.json());
 
-const PORT = process.env.port || 8000;
-const timeFormat = String("YYYY MMMMDo HH:mm:ss");
+const Users = require('./routers/users');
+const Loads = require('./routers/load');
+const Deals = require('./routers/deals');
 
 function setupDB() {
     mongoose.connect(config.database);
 
     mongoose.connection.on('connected', () => {
-        console.log('['+ moment().format(timeFormat)  + '] '+ 'Trader Connected to MongoDB successfully');
+        fileLog('Trader Connected to MongoDB successfully');
     });
 
     mongoose.connection.on('error', (err) => {
-        console.log('['+ moment().format(timeFormat)  + '] '+ 'Database error'+err);
+        fileLog('Database error' + err);
     });
 }
 
@@ -26,23 +37,22 @@ function setupTime() {
     moment.locale('zh-cn');
 }
 
-
-
 function startMarket() {
-    // updatePriceSinceClose
-    // loadPendingOrders
-    console.log('['+ moment().format(timeFormat)  + '] ' + 'Market has started');
+
+    Heap.loadPendingOrders();
+    fileLog('Market has started');
 }
 
 function startWebServer() {
-    app.get('/test', (req, res) => {
-        res.send("WildSaoFeng");
-    });
 
-    // Use Some Routes;
+    // Use 'users' 'load' 'deals' Three Router Middleware
+    app.use('/users', Users);
+    app.use('/load' , Loads);
+    app.use('/deals', Deals);
 
+    // Start Web Server Listening
     app.listen(PORT, () => {
-        console.log('['+ moment().format(timeFormat)  + '] '+ 'Server started on the port ' + PORT);
+        fileLog('Server Started on Port ' + PORT);
     });
 }
 

@@ -9,11 +9,11 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String
     },
-    historyOrders: [Number],
-    pendingOrders: [Number],
+    historyOrders: [String],
+    pendingOrders: [String],
     balanceA: Number,
     balanceB: Number,
-    balanceC: Number
+    balanceC: Number,
 
 });
 
@@ -21,6 +21,10 @@ const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function (id, callback) {
     User.findById(id, callback);
+};
+
+module.exports.getUserByUsername = function (username, callback) {
+    User.findOne({ username: username}, callback);
 };
 
 module.exports.addUser = function (newUser, callback) {
@@ -33,6 +37,8 @@ module.exports.addUser = function (newUser, callback) {
     });
 };
 
+
+
 module.exports.comparePassword = function (candidatePassword, hash, callback) {
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
         if(err) throw err;
@@ -40,20 +46,58 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
     });
 };
 
-module.exports.userAddBalanceA = function (id, delta) {
-    User.findByIdAndUpdate(id, { $set: {
-            balanceA: balanceA + delta
-        }});
+module.exports.addBalanceA = function (id, delta, callback) {
+    User.findByIdAndUpdate(id, { $inc: {
+            "balanceA": delta
+        }}, callback);
 };
 
-module.exports.userAddBalanceB = function (id, delta) {
-    User.findByIdAndUpdate(id, { $set: {
-            balanceA: balanceB + delta
-        }});
+module.exports.addBalanceB = function (id, delta, callback) {
+    User.findByIdAndUpdate(id, { $inc: {
+            "balanceB": delta
+        }}, callback);
 };
 
-module.exports.userAddBalanceC = function (id, delta) {
-    User.findByIdAndUpdate(id, { $set: {
-            balanceA: balanceC + delta
-        }});
+module.exports.addBalanceC = function (id, delta, callback) {
+    User.findByIdAndUpdate(id, { $inc: {
+            "balanceC": delta
+        }}, callback);
+};
+
+// 我都不知道这里我是怎么卡住又是怎么解决的总之这次对了
+// 现在我知道了，必须要加上回调函数，不然加不成功
+module.exports.pushIntoPending = function (id, orderId) {
+    // console.log("****" + typeof orderId.toString());
+    orderId = orderId.toString();
+    // console.log(id +'*' + orderId);
+    User.findByIdAndUpdate(id, { $push: {
+        pendingOrders: orderId
+    }}, {
+        upsert: true
+    }, (err, suc) => {});
+};
+
+module.exports.pullFromPending = function (id, orderId) {
+    // console.log("****" + typeof orderId.toString());
+    orderId = orderId.toString();
+    // console.log(id +'*' + orderId);
+    User.findByIdAndUpdate(id, { $pull: {
+            pendingOrders: orderId
+        }}, {
+    }, (err, suc) => {});
+};
+
+module.exports.pushIntoHistory = function (id, orderId) {
+    // console.log("****" + typeof orderId.toString());
+    orderId = orderId.toString();
+    // console.log(id +'*' + orderId);
+    User.findByIdAndUpdate(id, { $push: {
+            historyOrders: orderId
+        }}, {
+        upsert: true
+    }, (err, suc) => {});
+};
+
+module.exports.popFromPending = function (id, orderId) {
+    User.findByIdAndUpdate(id, { $pop: {pendingOrders: orderId}} );
 };

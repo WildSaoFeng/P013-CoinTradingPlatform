@@ -17,3 +17,8 @@ module.exports.getHistoryOrderById = function (id, callback) {
 module.exports.getHistoryOrderByUser = function (user, callback) {
     HistoryOrder.find({ owner: user }, callback);
 };
+
+module.exports.addNewHistoryOrder = function (newOrder, callback) {
+    newOrder.save(callback);
+};
+

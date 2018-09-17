@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
+const User = require('../models/user');
+const config = require('../config/database');
 
 router.post('/authenticate/pswd', (req, res, next) => {
     const username = req.body.username;
@@ -28,7 +30,7 @@ router.post('/authenticate/pswd', (req, res, next) => {
                         id: user._id,
                         name: user.name,
                         username: user.username,
-                        email: user.email
+
                     }
                 });
             } else {
@@ -38,4 +40,67 @@ router.post('/authenticate/pswd', (req, res, next) => {
     });
 });
 
+router.post('/register', (req, res, next) => {
+    let newUser = new User({
+        name: req.body.name,
+        username: req.body.username,
+        password: req.body.password,
+        balanceA: 0,
+        balanceB: 0,
+        balanceC: 0,
+    });
+    // console.log(newUser);
+
+    User.addUser(newUser, (err, user) => {
+        if(err){
+            res.json({success:false,msg:'Failed to register user'});
+        } else{
+            res.json({success:true,msg:'User registered'});
+        }
+    });
+});
+
+router.post('/add/a', (req, res, next) => {
+    let delta = req.body.delta;
+    let id = req.body.id;
+
+    User.addBalanceA(id, delta, (err, success) => {
+        if(err){
+            res.json({success:false,msg:'Failed to add user\'s balance A'});
+        } else{
+            res.json({success:true,msg:'Successfully add user\'s balance A'});
+        }
+    });
+});
+
+router.post('/add/b', (req, res, next) => {
+    let delta = req.body.delta;
+    let id = req.body.id;
+
+    User.addBalanceB(id, delta, (err, success) => {
+        if(err){
+            res.json({success:false,msg:'Failed to add user\'s balance B'});
+        } else{
+            res.json({success:true,msg:'Successfully add user\'s balance B'});
+        }
+    });
+});
+
+router.post('/add/c', (req, res, next) => {
+    let delta = req.body.delta;
+    let id = req.body.id;
+
+    User.addBalanceC(id, delta, (err, success) => {
+        if(err){
+            res.json({success:false,msg:'Failed to add user\'s balance C'});
+        } else{
+            res.json({success:true,msg:'Successfully add user\'s balance C'});
+        }
+    });
+});
+
+
+
 module.exports = router;
+
+

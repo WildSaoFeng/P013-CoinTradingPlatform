@@ -12,8 +12,9 @@ router.get('/test', (req, res, next) => {
 });
 
 router.get('/info', (req, res, next) => {
-    let allPrice = Price5s.getAllPrice();
-    res.send(allPrice);
+    Price5s.getAllPrice((err, allPrice) => {
+        res.send(allPrice);
+    });
 });
 
 router.get('/user/profile', (req, res, next) => {
