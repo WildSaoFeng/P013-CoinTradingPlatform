@@ -15,7 +15,7 @@ router.post('/buy', (req, res, next) => {
         isBuying: true,
     });
 
-    User.addBalanceA(req.body.owner, -req.body.quant * req.body.price, (err, success) => {
+    User.addBalanceAbyId(req.body.owner, -req.body.quant * req.body.price, (err, success) => {
         // if(err){
         //     fileLog(err);
         // } else{
@@ -24,7 +24,6 @@ router.post('/buy', (req, res, next) => {
     });
 
     Heap.addNewOrder(newOrder, (err, success) => {
-        User.pushIntoPending(req.body.owner, success._id);
         if(err){
             res.json({success:false,msg:'Failed to buy!' + err});
         } else{
@@ -42,10 +41,11 @@ router.post('/sell', (req, res, next) => {
         isBuying: false,
     });
 
-    User.addBalanceB(req.body.owner, -req.body.quant , (err, success) => {});
+    User.addBalanceBbyId(req.body.owner, -req.body.quant , (err, success) => {
+
+    });
 
     Heap.addNewOrder(newOrder, (err, success) => {
-        User.pushIntoPending(req.body.owner, success._id);
         if(err){
             res.json({success:false,msg:'Failed to sell!' + err});
         } else{
@@ -57,6 +57,11 @@ router.post('/sell', (req, res, next) => {
 router.post('/update', (req, res, next) => {
     Heap.update();
     res.send('Update Successfully! :o');
+});
+
+router.get('/show', (req, res, next) => {
+    Heap.showTwoHeaps();
+    res.send('showHeaps! ');
 });
 
 module.exports = router;

@@ -62,3 +62,5 @@ function startWebServer() {
     startMarket();
     startWebServer();
 })();
+
+module.exports = app;

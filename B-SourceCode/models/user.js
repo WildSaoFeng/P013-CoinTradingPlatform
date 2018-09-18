@@ -46,23 +46,48 @@ module.exports.comparePassword = function (candidatePassword, hash, callback) {
     });
 };
 
-module.exports.addBalanceA = function (id, delta, callback) {
+module.exports.addBalanceAbyId = function (id, delta, callback) {
     User.findByIdAndUpdate(id, { $inc: {
             "balanceA": delta
         }}, callback);
 };
 
-module.exports.addBalanceB = function (id, delta, callback) {
+module.exports.addBalanceBbyId = function (id, delta, callback) {
     User.findByIdAndUpdate(id, { $inc: {
             "balanceB": delta
         }}, callback);
 };
 
-module.exports.addBalanceC = function (id, delta, callback) {
+module.exports.addBalanceCbyId = function (id, delta, callback) {
     User.findByIdAndUpdate(id, { $inc: {
             "balanceC": delta
         }}, callback);
 };
+
+module.exports.addBalanceA = function (username, delta, callback) {
+    User.getUserByUsername(username, (err, usr) => {
+        User.findByIdAndUpdate(usr._id, { $inc: {
+                "balanceA": delta
+            }}, callback);
+    });
+};
+
+module.exports.addBalanceB = function (username, delta, callback) {
+    User.getUserByUsername(username, (err, usr) => {
+        User.findByIdAndUpdate(usr._id, { $inc: {
+                "balanceB": delta
+            }}, callback);
+    });
+};
+
+module.exports.addBalanceC = function (username, delta, callback) {
+    User.getUserByUsername(username, (err, usr) => {
+        User.findByIdAndUpdate(usr._id, { $inc: {
+                "balanceC": delta
+            }}, callback);
+    });
+};
+
 
 // 我都不知道这里我是怎么卡住又是怎么解决的总之这次对了
 // 现在我知道了，必须要加上回调函数，不然加不成功

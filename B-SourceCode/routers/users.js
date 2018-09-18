@@ -99,6 +99,18 @@ router.post('/add/c', (req, res, next) => {
     });
 });
 
+router.post('/add/byname/a', (req, res, next) => {
+    let delta = req.body.delta;
+    let username = req.body.username;
+
+    User.addBalanceA(username, delta, (err, success) => {
+        if(err){
+            res.json({success:false,msg:'Failed to add user\'s balance A'});
+        } else{
+            res.json({success:true,msg:'Successfully add user\'s balance A'});
+        }
+    });
+});
 
 
 module.exports = router;

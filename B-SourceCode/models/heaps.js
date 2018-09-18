@@ -5,6 +5,8 @@ const Price5s = require('./priceInFiveSec');
 const User = require('./user');
 const Math = require('mathjs');
 const fileLog = require('../utils/log');
+const specLog = require('../utils/log2');
+const async = require('async');
 
 const rates = 1;
 
@@ -14,7 +16,7 @@ function smallHeapCMP(a, b) {
         ret = 1;
     else if(a.price > b.price)
         ret = -1;
-    return ret;
+    return -ret;
 }
 
 function largeHeapCMP(a, b) {
@@ -23,115 +25,155 @@ function largeHeapCMP(a, b) {
         ret = 1;
     else if(a.price > b.price)
         ret = -1;
-    return -ret;
+    return ret;
 }
 
-const SellHeap = new Heap(smallHeapCMP);
+let SellHeap = new Heap(smallHeapCMP);
 
-const BuyHeap = new Heap(largeHeapCMP);
+let BuyHeap = new Heap(largeHeapCMP);
 
 module.exports.loadPendingOrders = function () {
-    const allPendingOrders = PendingOrder.getAllPendingOrders(() => {
+    PendingOrder.getAllPendingOrders((err, allPendingOrders) => {
        fileLog('load pending orders successfully.');
+       // console.log(allPendingOrders);
+       // OMG ... for-in loop return index!
+       for(let thisIndex in allPendingOrders) {
+           let thisOrder = allPendingOrders[thisIndex];
+           if(thisOrder.isBuying) {
+                BuyHeap.push(thisOrder);
+           } else {
+                SellHeap.push(thisOrder);
+           }
+           // console.log(thisOrder);
+       }
+       // console.log(SellHeap);
     });
-    for(let thisOrder in allPendingOrders) {
-        if(thisOrder.isBuying) {
-            BuyHeap.push(thisOrder);
-        } else {
-            SellHeap.push(thisOrder);
-        }
-    }
 
 };
 
-function successfulDeal(sell, buy, quant) {
-    const dealPrice = (sell.price + buy.price) / 2;
+module.exports.showTwoHeaps = function() {
+    specLog(SellHeap);
+    console.log(SellHeap);
+    specLog(BuyHeap);
+    console.log(BuyHeap);
+};
 
-    User.addBalanceA(buy.owner, buy.price * quant);
-    User.addBalanceB(sell.owner, quant);
-
-    User.addBalanceA(buy.owner, - dealPrice * quant);
-    User.addBalanceB(sell.owner,  - quant);
-
-    User.addBalanceA(sell.owner, rates * dealPrice * quant);
-    User.addBalanceB(buy.owner, quant);
-
-    PendingOrder.deletePendingOrderByOrder(sell);
-    PendingOrder.deletePendingOrderByOrder(buy);
-
-    let newHistorySellOrder = new HistoryOrder({
-        owner: sell.owner,
-        price: dealPrice,
-        quant: quant,
-        isBuying: false,
-    });
-    HistoryOrder.addNewHistoryOrder(newHistorySellOrder);
-
-    let newHistoryBuyOrder = new HistoryOrder({
-        owner: buy.owner,
-        price: dealPrice,
-        quant: quant,
-        isBuying: true,
-    });
-    HistoryOrder.addNewHistoryOrder(newHistoryBuyOrder);
-
-    Price5s.updateCurrentTime(dealPrice, quant);
-}
-
-function adjustCurrentHeaps () {
+async function adjustCurrentHeaps () {
 
     let minSellOrder = SellHeap.pop();
     if(!minSellOrder) return ;
 
     let maxBuyOrder = BuyHeap.pop();
-    if(!maxBuyOrder) return ;
+    if(!maxBuyOrder) {
+        SellHeap.push(minSellOrder);
+        return ;
+    }
+
+    // specLog(minSellOrder);
+
+    // specLog(maxBuyOrder);
+
 
     while (minSellOrder.price <= maxBuyOrder.price) {
 
         let minQuant = Math.min(minSellOrder.quant, maxBuyOrder.quant);
 
-        successfulDeal(minSellOrder, maxBuyOrder, minQuant);
+        const dealPrice = (minSellOrder.price + maxBuyOrder.price) / 2;
 
-        if(minSellOrder.quant - minQuant) {
-            let newPendingOrder = new PendingOrder({
-                owner: minSellOrder.time,
+        // Give Back Pre-order A/B
+        await User.addBalanceAbyId(maxBuyOrder.owner, maxBuyOrder.price * maxBuyOrder.quant, (err, suc) => {});
+        await User.addBalanceBbyId(minSellOrder.owner, minSellOrder.quant, (err, suc) => {});
+
+        // Cost
+        await User.addBalanceAbyId(maxBuyOrder.owner, - dealPrice * minQuant, (err, suc) => {});
+        await User.addBalanceBbyId(minSellOrder.owner,  - minQuant, (err, suc) => {});
+
+        // Make Deals
+        await User.addBalanceBbyId(maxBuyOrder.owner, minQuant, (err, suc) => {});
+        await User.addBalanceAbyId(minSellOrder.owner,rates * dealPrice * minQuant , (err, suc) => {});
+
+        // Adding History Deals
+        let newHistorySellOrder = new HistoryOrder({
+            owner: minSellOrder.owner,
+            price: dealPrice,
+            quant: minQuant,
+            isBuying: false,
+        });
+        await HistoryOrder.addNewHistoryOrder(newHistorySellOrder);
+
+        let newHistoryBuyOrder = new HistoryOrder({
+            owner: maxBuyOrder.owner,
+            price: dealPrice,
+            quant: minQuant,
+            isBuying: true,
+        });
+        await HistoryOrder.addNewHistoryOrder(newHistoryBuyOrder);
+
+        // Update Prices
+        // await Price5s.updateCurrentTime(dealPrice, minQuant);
+
+        // Making Remain Deals
+        if(minSellOrder.quant - minQuant > 0) {
+            let newPendingSellOrder = new PendingOrder({
+                owner: minSellOrder.owner,
                 price: minSellOrder.price,
                 quant: minSellOrder.quant - minQuant,
-                isBuying: minSellOrder.isBuying
+                isBuying: false
             });
-            SellHeap.push(thisOrder);
-            PendingOrder.addNewPendingOrder(newPendingOrder);
+            SellHeap.push(newPendingSellOrder);
+            await PendingOrder.addNewPendingOrder(newPendingSellOrder);
         }
 
-        if(maxBuyOrder.quant - minQuant) {
-            let newPendingOrder = new PendingOrder({
-                owner: maxBuyOrder.time,
+        if(maxBuyOrder.quant - minQuant > 0) {
+            let newPendingBuyOrder = new PendingOrder({
+                owner: maxBuyOrder.owner,
                 price: maxBuyOrder.price,
                 quant: maxBuyOrder.quant - minQuant,
-                isBuying: maxBuyOrder.isBuying
+                isBuying: true
             });
-            BuyHeap.addNewPendingOrder(newPendingOrder);
+            BuyHeap.push(newPendingBuyOrder);
+            await PendingOrder.addNewPendingOrder(newPendingBuyOrder);
         }
 
-        minSellOrder = SellHeap.pop();
-        if(!minSellOrder) return ;
+        // Delete Old Orders
+        await PendingOrder.deletePendingOrderByOrder(minSellOrder._id.toString(), minSellOrder.owner);
+        await PendingOrder.deletePendingOrderByOrder(maxBuyOrder._id.toString(), maxBuyOrder.owner);
 
+        // Go to next iteration
+        minSellOrder = SellHeap.pop();
+        if(!minSellOrder) {
+            // SellHeap.push(minSellOrder);
+            break ;
+        }
         maxBuyOrder = BuyHeap.pop();
-        if(!maxBuyOrder) return ;
+        if(!maxBuyOrder) {
+            BuyHeap.push(minSellOrder);
+            break ;
+        }
+
+        // specLog(minSellOrder);
+        //
+        // specLog(maxBuyOrder);
+
+        console.log("A Loop");
 
     }
 
     console.log('Adjust Complete!');
 
-};
+}
 
-module.exports.addNewOrder = function(newOrder, callback){
+module.exports.addNewOrder = async function(newOrder, callback){
     if(newOrder.isBuying)
         BuyHeap.push(newOrder);
     else
         SellHeap.push(newOrder);
-    adjustCurrentHeaps();
-    PendingOrder.addNewPendingOrder(newOrder, callback);
+    // fileLog('Adj');
+    // console.log(BuyHeap);
+    // console.log(SellHeap);
+    await PendingOrder.addNewPendingOrder(newOrder);
+    await adjustCurrentHeaps();
+    callback();
 };
 
 module.exports.update = function () {

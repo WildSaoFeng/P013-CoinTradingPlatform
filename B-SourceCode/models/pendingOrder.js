@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('../config/database');
+const User = require('./user');
+const specLog = require('../utils/log2');
 
 const PendingOrderSchema = mongoose.Schema({
     owner: String,
@@ -22,10 +24,15 @@ module.exports.getPendingOrderByUser = function (user, callback) {
     PendingOrder.find({ owner: user }, callback);
 };
 
-module.exports.addNewPendingOrder = function (newOrder, callback) {
-    newOrder.save(callback);
+module.exports.addNewPendingOrder = async function (newOrder) {
+    // specLog(newOrder);
+    await newOrder.save((err, suc) => { console.log('-SAVE-'); if(err) console.log(err);specLog(suc);});
+    User.pushIntoPending(newOrder.owner, newOrder._id);
 };
 
-module.exports.deletePendingOrderByOrder = function (oldOrder) {
-    PendingOrder.findOneAndDelete(oldOrder);
+module.exports.deletePendingOrderByOrder = async function (id, owner) {
+    // specLog(id);
+    await PendingOrder.findOneAndDelete(id, (err, suc) => {console.log('-DELETE- '+id);});
+    User.pullFromPending(owner, id);
+
 };

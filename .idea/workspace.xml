@@ -8,17 +8,23 @@
       <change afterPath="$PROJECT_DIR$/B-SourceCode/models/pendingOrder.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/B-SourceCode/models/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B-SourceCode/removed_test/10_clear.test.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/B-SourceCode/routers/load.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/B-SourceCode/routers/users.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/B-SourceCode/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B-SourceCode/test/1_init2player.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B-SourceCode/test/2_give2playersMoney.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/B-SourceCode/utils/log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B-SourceCode/utils/log2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/A-MockupDesign/design book ver0.6.bmpr" beforeDir="false" afterPath="$PROJECT_DIR$/A-MockupDesign/design book ver0.6.bmpr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/B-SourceCode/data_structure/heap.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/B-SourceCode/models/historyOrder.js" beforeDir="false" afterPath="$PROJECT_DIR$/B-SourceCode/models/historyOrder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js" beforeDir="false" afterPath="$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B-SourceCode/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/B-SourceCode/models/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/B-SourceCode/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/B-SourceCode/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/B-SourceCode/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/B-SourceCode/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/B-SourceCode/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/B-SourceCode/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B-SourceCode/utils/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/B-SourceCode/utils/log.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,17 +39,22 @@
     <session id="-1415900442">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="DB on MacOS/fxtrader/hisorders" value="18" />
+          <entry key="DB on MacOS/fxtrader/pends" value="43" />
+          <entry key="DB on MacOS/fxtrader/users" value="43" />
           <entry key="css" value="7" />
           <entry key="html" value="3" />
-          <entry key="js" value="70" />
+          <entry key="js" value="104" />
           <entry key="md" value="2" />
           <entry key="svg" value="1" />
         </counts>
@@ -51,14 +62,15 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="JavaScript" value="11895" />
+          <entry key="JavaScript" value="14021" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="7" />
           <entry key="HTML" value="3" />
-          <entry key="JavaScript" value="70" />
+          <entry key="JavaScript" value="104" />
+          <entry key="MONGO" value="104" />
           <entry key="Markdown" value="2" />
           <entry key="SVG" value="1" />
         </counts>
@@ -66,7 +78,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="1" />
-          <entry key="js" value="11895" />
+          <entry key="js" value="14021" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -77,23 +89,50 @@
     <favorites_list name="P013-CoinTradingPlatform" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49473685">
+    <splitter split-orientation="horizontal" split-proportion="0.55533063">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/deals.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="774">
-                  <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+                <state relative-caret-position="509">
+                  <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/B-SourceCode/models/heaps.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="569">
+                  <caret line="164" lean-forward="true" selection-start-line="164" selection-end-line="164" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/load.js">
+            <entry file="file://$PROJECT_DIR$/B-SourceCode/models/pendingOrder.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+                <state relative-caret-position="555">
+                  <caret line="37" column="2" lean-forward="true" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/B-SourceCode/models/historyOrder.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="330">
+                  <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/B-SourceCode/server.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="345">
+                  <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
@@ -103,57 +142,18 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/B-SourceCode/models/heaps.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-688">
-                  <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-                </state>
-              </provider>
+            <entry file="mongo://DB on MacOS/fxtrader/users">
+              <provider selected="true" editor-type-id="MongoData" />
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/B-SourceCode/node_modules/heap/lib/heap.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2562">
-                  <caret line="66" column="52" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="52" />
-                </state>
-              </provider>
+            <entry file="mongo://DB on MacOS/fxtrader/pends">
+              <provider selected="true" editor-type-id="MongoData" />
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/B-SourceCode/models/user.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1176">
-                  <caret line="94" column="25" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/B-SourceCode/models/pendingOrder.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/users.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-12">
-                  <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-                </state>
-              </provider>
+            <entry file="mongo://DB on MacOS/fxtrader/hisorders">
+              <provider selected="true" editor-type-id="MongoData" />
             </entry>
           </file>
         </leaf>
@@ -176,6 +176,9 @@
       <find>body</find>
       <find>selll</find>
       <find>getAll</find>
+      <find>sell</find>
+      <find>dealPrice</find>
+      <find>spec</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,17 +208,21 @@
         <option value="$PROJECT_DIR$/B-SourceCode/models/User.js" />
         <option value="$PROJECT_DIR$/B-SourceCode/routers/deal.js" />
         <option value="$PROJECT_DIR$/B-SourceCode/config/database.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/utils/log.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/models/historyOrder.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/server.js" />
         <option value="$PROJECT_DIR$/B-SourceCode/data_structure/heap.js" />
         <option value="$PROJECT_DIR$/B-SourceCode/routers/load.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/models/pendingOrder.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/routers/users.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/models/heaps.js" />
-        <option value="$PROJECT_DIR$/B-SourceCode/routers/deals.js" />
         <option value="$PROJECT_DIR$/B-SourceCode/models/user.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/utils/log.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/utils/log2.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/models/historyOrder.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/server.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/test/init2player.test.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/test/2_give2playersMoney.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/removed_test/10_clear.test.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/routers/users.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/routers/deals.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/models/heaps.js" />
+        <option value="$PROJECT_DIR$/B-SourceCode/models/pendingOrder.js" />
       </list>
     </option>
   </component>
@@ -239,8 +246,8 @@
       <path value="$PROJECT_DIR$/B-SourceCode/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="850" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="815" />
     <option name="y" value="-1417" />
     <option name="width" value="2560" />
     <option name="height" value="1417" />
@@ -270,34 +277,13 @@
               <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="P013-CoinTradingPlatform" type="462c0819:PsiDirectoryNode" />
               <item name="B-SourceCode" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P013-CoinTradingPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="B-SourceCode" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="P013-CoinTradingPlatform" type="462c0819:PsiDirectoryNode" />
               <item name="B-SourceCode" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P013-CoinTradingPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="B-SourceCode" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="heap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P013-CoinTradingPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="B-SourceCode" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="heap" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="removed_test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
@@ -309,14 +295,7 @@
               <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
               <item name="P013-CoinTradingPlatform" type="462c0819:PsiDirectoryNode" />
               <item name="B-SourceCode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="P013-CoinTradingPlatform" type="462c0819:PsiDirectoryNode" />
-              <item name="B-SourceCode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="P013-CoinTradingPlatform" type="b2602c69:ProjectViewProjectNode" />
@@ -335,11 +314,15 @@
     <property name="javascript.nodejs.core.library.configured.version" value="8.12.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/B-SourceCode/node_modules/mocha" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/B-SourceCode/removed_test" />
+      <recent name="$PROJECT_DIR$/B-SourceCode/test" />
+      <recent name="$PROJECT_DIR$/B-SourceCode/utils" />
       <recent name="$PROJECT_DIR$/B-SourceCode/models" />
       <recent name="$PROJECT_DIR$/B-src/cointrader/src/components" />
     </key>
@@ -356,6 +339,24 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Node.js.heaps.js">
+    <configuration name="heaps.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="heaps.js" working-dir="$PROJECT_DIR$/B-SourceCode/models">
+      <method v="2" />
+    </configuration>
+    <configuration name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/B-SourceCode">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.heaps.js" />
+      <item itemvalue="Node.js.server.js" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.heaps.js" />
+        <item itemvalue="Node.js.server.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -367,12 +368,14 @@
       <option name="presentableId" value="Default" />
       <updated>1536887719567</updated>
       <workItem from="1536887722215" duration="29389000" />
-      <workItem from="1537092454742" duration="29147000" />
+      <workItem from="1537092454742" duration="33953000" />
+      <workItem from="1537248216038" duration="11643000" />
+      <workItem from="1537281750770" duration="9373000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58536000" />
+    <option name="totallyTimeSpent" value="84358000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -384,26 +387,27 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="850" y="-1417" width="2560" height="1417" extended-state="6" />
+    <frame x="815" y="-1417" width="2560" height="1417" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.11000794" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49879518" visible="true" weight="0.110802226" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.50120485" side_tool="true" weight="0.11000794" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50177234" side_tool="true" weight="0.28603774" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Run" order="5" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="9" weight="0.32867134" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="8" sideWeight="0.49980307" weight="0.32830188" />
+      <window_info anchor="bottom" id="Mongo Explorer" order="9" sideWeight="0.49841145" visible="true" weight="0.28603774" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.5015886" side_tool="true" visible="true" weight="0.28603774" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="Terminal" order="3" visible="true" weight="0.28633836" />
+      <window_info anchor="right" id="Debug" order="3" visible="true" weight="0.33399522" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +420,26 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/B-src" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="NodeJSConfigurationType">
+        <watch expression="sell._doc.owner" />
+        <watch expression="minQuant" />
+        <watch expression="dealPrice" />
+        <watch expression="newHistorySellOrder" language="JavaScript" />
+        <watch expression="newHistoryBuyOrder" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>newHistorySellOrder</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/B-src/cointrader/src/registerServiceWorker.js" />
@@ -483,87 +507,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/data_structure/heap.js" />
     <entry file="file://$PROJECT_DIR$/B-SourceCode/utils/log.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/historyOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="27" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/data_structure/heap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/load.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/pendingOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/B-SourceCode/node_modules/heap/lib/heap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2562">
+        <state relative-caret-position="15">
           <caret line="66" column="52" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/heaps.js">
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/load.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-688">
-          <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="360">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/deals.js">
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/utils/log2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+        <state relative-caret-position="120">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/test/1_init2player.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/removed_test/10_clear.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/test/2_give2playersMoney.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1635">
+          <caret line="109" column="34" lean-forward="true" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/priceInFiveSec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/B-SourceCode/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1176">
-          <caret line="94" column="25" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
+        <state relative-caret-position="584">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/routers/deals.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="47" column="2" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/historyOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/pendingOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="2" lean-forward="true" selection-start-line="37" selection-start-column="2" selection-end-line="37" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/B-SourceCode/models/heaps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="164" lean-forward="true" selection-start-line="164" selection-end-line="164" />
         </state>
       </provider>
     </entry>

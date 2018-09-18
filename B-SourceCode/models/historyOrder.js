@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const config = require('../config/database');
+const User = require('./user');
 
 const HistoryOrderSchema = mongoose.Schema({
-    owner: Number,
+    owner: String,
     price: Number,
     quant: Number,
     isBuying: Boolean,
@@ -18,7 +19,8 @@ module.exports.getHistoryOrderByUser = function (user, callback) {
     HistoryOrder.find({ owner: user }, callback);
 };
 
-module.exports.addNewHistoryOrder = function (newOrder, callback) {
-    newOrder.save(callback);
+module.exports.addNewHistoryOrder = function (newOrder) {
+    newOrder.save();
+    User.pushIntoHistory(newOrder.owner, newOrder._id);
 };
 

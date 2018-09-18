@@ -41,7 +41,37 @@ module.exports.addNewPrice = function(newPrice ,callback) {
     newPrice.save(callback);
 };
 
-function updateToCurrentTime() {
+module.exports.updateCurrentTime = function(dealPrice, quant){
+    const curTime = moment();
+    if(globalLast && globalLast.add(5, 'seconds') <= curTime) {
+        glbOpen = 0? dealPrice : glbOpen;
+        glbHigh = Math.max(glbHigh, dealPrice);
+        glbLow = Math.min(glbLow, dealPrice);
+        glbClose = dealPrice;
+        glbVol += quant;
+        return ;
+    }
+
+    if(gloVol) {
+        let newPrice = new Price5s({
+            time: globalLast,
+            open: glbOpen,
+            high: glbHigh,
+            low: glbLow,
+            close: glbClose,
+            volume: glbVol
+        });
+        addNewPrice(newPrice, () => {
+            console.log('add new price!');
+        });
+        globalLast.add(5, 'second');
+    }
+
+    glbOpen = 0;
+    glbHigh = -1;
+    glbLow = 0x7fffffff/2;
+    glbClose = 0;
+    glbVol = 0;
 
     Price5s.getAllPrice((err, allPrice) => {
 
@@ -80,41 +110,5 @@ function updateToCurrentTime() {
             lstTime = lstTime.add(5, 'seconds');
         }
     });
-}
-
-function calculateLastTime() {
-    if(glbVol == 0)return ;
-    let newPrice = new Price5s({
-        time: globalLast,
-        open: glbOpen,
-        high: glbHigh,
-        low: glbLow,
-        close: glbClose,
-        volume: glbVol
-    });
-    addNewPrice(newPrice, () => {
-        console.log('add new price!');
-    });
-    globalLast.add(5, 'second');
-}
-
-module.exports.updateCurrentTime = function(dealPrice, quant){
-    const curTime =moment();
-    if(globalLast.add(5, 'seconds') <= curTime) {
-        glbOpen = 0? dealPrice : glbOpen;
-        glbHigh = Math.max(glbHigh, dealPrice);
-        glbLow = Math.min(glbLow, dealPrice);
-        glbClose = dealPrice;
-        glbVol += quant;
-        return ;
-    }
-    calculateLastTime();
-    updateToCurrentTime();
-
-    glbOpen = 0;
-    glbHigh = -1;
-    glbLow = 0x7fffffff/2;
-    glbClose = 0;
-    glbVol = 0;
 
 };

@@ -11,6 +11,6 @@ function specLog(str) {
     console.log('****************************');
 }
 
-module.exports = fileLog;
+module.exports = specLog;
 
 
