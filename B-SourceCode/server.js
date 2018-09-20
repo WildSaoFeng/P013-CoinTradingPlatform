@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const passport = require('passport');
 const moment = require('moment');
 
@@ -15,6 +16,10 @@ const PORT = process.env.port || 8000;
 // Begin App
 
 const app = express();
+app.use(express.static(path.join(__dirname, "./build")));
+
+app.use(cors());
+
 app.use(bodyParser.json());
 
 const Users = require('./routers/users');

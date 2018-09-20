@@ -49,7 +49,7 @@ class MyLoginPswd extends React.Component {
                         {getFieldDecorator('userName', {
                             rules: [{ required: true, message: 'Please input your username!' }],
                         })(
-                            <Input value={this.state.box1} onChange={evt => this.updateBoxAChange1(evt)} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                            <Input onChange={evt => this.updateBoxAChange1(evt)} prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
                         )}
                     </FormItem>
                     <FormItem>

@@ -25,7 +25,35 @@ class MyLogin extends React.Component {
 
         console.log(this.state.box1 + ' ' + this.state.box2 + ' ' + this.state.authType  );
 
-        // axios.
+        // switch (this.state.authType) {
+        //     case 'pswd':
+        //
+        //         break;
+        //
+        //     case ''
+        // }
+
+        axios({
+            method: 'post',
+            url: '/users/authenticate/pswd',
+            data: {
+                username: this.state.box1,
+                password: this.state.box2
+            }
+        }).then(res => {
+            console.log(res);
+            if(res.data.success) {
+                Modal.success({
+                    title: '登录成功',
+                    content: '请开始您的交易'
+                });
+            } else {
+                Modal.({
+                    title: '登录失败',
+                    content: res.data.msg
+                });
+            }
+        });
 
         // setTimeout(() => {
         //     this.setState({ loading: false, visible: false });
