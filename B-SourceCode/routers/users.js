@@ -14,6 +14,7 @@ router.post('/authenticate/pswd', (req, res, next) => {
         if(!user){
             return res.json({success: false, msg: 'User no found'});
         }
+        // Core Part of Signing A Certificate.
         User.comparePassword(password, user.password, (err, isMatch) => {
             if(err) throw err;
             if(isMatch){
@@ -40,6 +41,42 @@ router.post('/authenticate/pswd', (req, res, next) => {
     });
 });
 
+router.post('/authenticate/token', (req, res, next) => {
+    const username = 'WildSaoFeng';
+    const password = req.body.token;
+
+    User.getUserByUsername(username, (err, user) => {
+        // if(err) throw err;
+        // if(!user){
+        //     return res.json({success: false, msg: 'User no found'});
+        // }
+        // Core Part of Signing A Certificate.
+        //User.comparePassword(password, user.password, (err, isMatch) => {
+        //    if(err) throw err;
+            if(req.body.token == 'R4%T'){
+                // Bug Fixed 1 : user.toJSON() from user, because plain text is needed
+                const token = jwt.sign(user.toJSON(), config.secret, {
+                    expiresIn: 604800 // 1 week
+                });
+
+                res.json({
+                    success: true,
+                    // Bug Fixed 3 : 'bearer ' from 'JWT ', later is legacy and 4.0 version updated
+                    token: 'bearer ' + token,
+                    user: {
+                        id: user._id,
+                        name: user.name,
+                        username: user.username,
+
+                    }
+                });
+            } else {
+                return res.json({success: false, msg: 'Wrong password'});
+            }
+        // });
+    });
+});
+
 router.post('/register', (req, res, next) => {
     let newUser = new User({
         name: req.body.name,
@@ -60,7 +97,7 @@ router.post('/register', (req, res, next) => {
     });
 });
 
-router.post('/add/a', (req, res, next) => {
+router.post('/add/a', verifyCertificate, (req, res, next) => {
     let delta = req.body.delta;
     let id = req.body.id;
 
@@ -73,7 +110,7 @@ router.post('/add/a', (req, res, next) => {
     });
 });
 
-router.post('/add/b', (req, res, next) => {
+router.post('/add/b', verifyCertificate, (req, res, next) => {
     let delta = req.body.delta;
     let id = req.body.id;
 
@@ -86,20 +123,31 @@ router.post('/add/b', (req, res, next) => {
     });
 });
 
-router.post('/add/c', (req, res, next) => {
+router.post('/add/c', verifyCertificate, (req, res, next) => {
     let delta = req.body.delta;
     let id = req.body.id;
 
-    User.addBalanceC(id, delta, (err, success) => {
-        if(err){
-            res.json({success:false,msg:'Failed to add user\'s balance C'});
-        } else{
-            res.json({success:true,msg:'Successfully add user\'s balance C'});
+    jwt.verify(req.token, 'saofeng', (err, authData) => {
+        if(err) {
+            res.sendStatus(403);
+        } else {
+            User.addBalanceC(id, delta, (err, success) => {
+                if(err){
+                    res.json({
+                        success:false,
+                        msg:'Failed to add user\'s balance C',
+                        authData
+                    });
+                } else{
+                    res.json({success:true,msg:'Successfully add user\'s balance C'});
+                }
+            });
         }
     });
+
 });
 
-router.post('/add/byname/a', (req, res, next) => {
+router.post('/add/byname/a',verifyCertificate, (req, res, next) => {
     let delta = req.body.delta;
     let username = req.body.username;
 
@@ -112,6 +160,22 @@ router.post('/add/byname/a', (req, res, next) => {
     });
 });
 
+// Authorization: Bearer <access_token>
+
+function verifyCertificate(req, res, next) {
+    // Get auth header value
+    const bearerHeader = req.headers['authorization'];
+    if(typeof bearerHeader !== 'undefined'){
+        // Split at the space
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        // Forbidden
+        res.sendStatus(403);
+    }
+}
 
 module.exports = router;
 

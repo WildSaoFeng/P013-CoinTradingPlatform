@@ -6,7 +6,7 @@ class MyNoticeBox extends Component {
     render() {
         return(
             <div>
-                <h3> 交易所财富排行榜</h3>
+                <h3> 繁星交易所 财富排行榜</h3>
                 <ListGroup>
                     <ListGroupItem> 第1名 有想法的肥宅洲    20 Starry</ListGroupItem>
                     <ListGroupItem> 第2名 帅气的王子楠      18 Starry</ListGroupItem>

@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 const passport = require('passport');
+const session = require('express-session');
 const moment = require('moment');
+const cookieParser = require('cookie-parser');
 
 // const Price5s= require('models/priceInFiveSec');
 const Heap = require('./models/heaps');
@@ -21,6 +23,19 @@ app.use(express.static(path.join(__dirname, "./build")));
 app.use(cors());
 
 app.use(bodyParser.json());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
+
+app.use(cookieParser());
+
+app.use(session({
+    secret: 'saofeng',
+    saveUninitialized: true,
+    resave: true
+}));
 
 const Users = require('./routers/users');
 const Loads = require('./routers/load');

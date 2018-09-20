@@ -19,8 +19,9 @@ class MyLoginChoose extends React.Component {
         console.log('click ', e);
         this.setState({
             current: e.key,
+        }, () => {
+            this.props.transferType(this.state.current);
         });
-        this.props.transferType(this.state.current);
         // console.log(this.state.current);
     };
 
