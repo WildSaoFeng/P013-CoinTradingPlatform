@@ -7,21 +7,21 @@ class MyCarousel extends Component{
         return (
             <Carousel>
                 <Carousel.Item>
-                    <img width={900} height={500} alt="900x500" src="/carousel.png" />
+                    <img className="carouselImg" alt="恭喜您糟糕的网络让您看到了我们留下的小彩蛋" src="https://huobi-1253283450.file.myqcloud.com/bit/banner/c63f0317-e066-4ec5-824c-317acc47638d.jpg" />
                     <Carousel.Caption>
                         <h3>First slide label</h3>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img width={900} height={500} alt="900x500" src="/carousel.png" />
+                    <img className="carouselImg" alt="恭喜您糟糕的网络让您看到了我们留下的小彩蛋" src="https://huobi-1253283450.file.myqcloud.com/bit/banner/5658c14f-f1a8-4874-9447-75313fa6412d.jpg" />
                     <Carousel.Caption>
                         <h3>Second slide label</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img width={900} height={500} alt="900x500" src="/carousel.png" />
+                    <img className="carouselImg" alt="恭喜您糟糕的网络让您看到了我们留下的小彩蛋" src="https://huobi-1253283450.file.myqcloud.com/bit/banner/423c2d9d-aa32-4aa5-b606-85308387b9bb.jpg" />
                     <Carousel.Caption>
                         <h3>Third slide label</h3>
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>

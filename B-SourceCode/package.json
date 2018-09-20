@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.9.2",
     "async": "^2.6.1",
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
@@ -18,6 +20,7 @@
     "mongoose": "^5.2.14",
     "passport": "^0.4.0",
     "path": "^0.12.7",
+    "qrcode.react": "^0.8.0",
     "react": "^16.5.1",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.1",
@@ -33,6 +36,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.9.1",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "supertest": "^3.3.0"

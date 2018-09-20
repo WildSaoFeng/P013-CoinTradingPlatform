@@ -26,3 +26,17 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.clear-margin{
+  margin: 0px 15px 0px 15px;
+}
+
+
+.clear-padding-row{
+  padding-left:0;
+  padding-right:0;
+}
+.clear-padding-col{
+  padding-top:0;
+  padding-bottom:0;
+}

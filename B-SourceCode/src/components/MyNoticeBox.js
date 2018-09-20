@@ -6,11 +6,12 @@ class MyNoticeBox extends Component {
     render() {
         return(
             <div>
-                <h3> Hello World!</h3>
+                <h3> 交易所财富排行榜</h3>
                 <ListGroup>
-                    <ListGroupItem>1</ListGroupItem>
-                    <ListGroupItem>2</ListGroupItem>
-                    <ListGroupItem>3</ListGroupItem>
+                    <ListGroupItem> 第1名 有想法的肥宅洲    20 Starry</ListGroupItem>
+                    <ListGroupItem> 第2名 帅气的王子楠      18 Starry</ListGroupItem>
+                    <ListGroupItem> 第3名 年轻有才的睡袋飞   15 Starry</ListGroupItem>
+                    <ListGroupItem> 第4名 可怜的公主丰👸   0 Starry</ListGroupItem>
                 </ListGroup>
             </div>
         );

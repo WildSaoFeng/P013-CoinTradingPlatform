@@ -1,0 +1,15 @@
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 35%;
+}
+.pswdInputContainer {
+  width: 300px;
+  margin-top: 35px;
+  margin-left: auto;
+  margin-right: auto;
+}
