@@ -40,6 +40,7 @@ app.use(session({
 const Users = require('./routers/users');
 const Loads = require('./routers/load');
 const Deals = require('./routers/deals');
+const SSO = require('./routers/sso');
 
 function setupDB() {
     mongoose.connect(config.database);
@@ -69,6 +70,7 @@ function startWebServer() {
     app.use('/users', Users);
     app.use('/load' , Loads);
     app.use('/deals', Deals);
+    app.use('/ssoback', SSO);
 
     // Start Web Server Listening
     app.listen(PORT, () => {

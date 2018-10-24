@@ -11,7 +11,7 @@ import MyFooter from './components/MyFooter';
 import HomePage from './components/pages/HomePage';
 import TradePage from './components/pages/TradePage';
 import DataPage from './components/pages/DataPage';
-
+import SSOPage from './components/pages/SSOPage';
 import { Modal, Popover, Button, notification, Icon, Avatar, Input, Checkbox, Form } from 'antd';
 import 'antd/lib/icon/style/css';
 import 'antd/lib/form/style/css';
@@ -58,6 +58,7 @@ class App extends Component {
               <Route path='/' component={HomePage} exact />
               <Route path='/trade' component={TradePage}/>
               <Route path='/data' component={DataPage}/>
+              <Route path='/sso/:cert' component={SSOPage}/>
             </div>
           </BrowserRouter>
           <MyFooter />;
